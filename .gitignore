@@ -5,3 +5,5 @@
 !/.github/
 !/.github/**/
 !/.github/CODEOWNERS
+
+!/LICENSE
