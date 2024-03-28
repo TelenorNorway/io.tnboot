@@ -10,6 +10,10 @@ plugins {
 	`jacoco-report-aggregation`
 }
 
+dependencies {
+	dokkaHtmlPlugin(libs.kotlin.dokka.versioning)
+}
+
 allprojects {
 	group = "io.tnboot"
 	version = System.getenv("VERSION") ?: "UNVERSIONED"
@@ -33,10 +37,6 @@ allprojects {
 	apply(plugin = "io.spring.dependency-management")
 	apply(plugin = "jacoco")
 	apply(plugin = "jacoco-report-aggregation")
-
-	dependencies {
-		dokkaHtmlPlugin(libs.kotlin.dokka.versioning)
-	}
 
 	kotlin.jvmToolchain(21)
 

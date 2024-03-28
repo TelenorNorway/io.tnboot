@@ -6,6 +6,7 @@ plugins {
 }
 
 dependencies {
+	dokkaHtmlPlugin(libs.kotlin.dokka.versioning)
 	implementation(libs.dotenv)
 	implementation(libs.kotlin.plugin.jvm)
 	implementation(libs.kotlin.plugin.kapt)
