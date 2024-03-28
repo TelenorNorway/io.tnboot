@@ -5,5 +5,7 @@
 !/.github/
 !/.github/**/
 !/.github/CODEOWNERS
+!/.github/assets/next.png
 
 !/LICENSE
+!/README.md
