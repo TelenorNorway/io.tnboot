@@ -4,6 +4,7 @@ plugins {
 
 allprojects {
 	group = "io.tnboot"
+	version = System.getenv("VERSION") ?: "UNVERSIONED"
 
 	repositories {
 		mavenCentral()
