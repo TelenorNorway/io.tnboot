@@ -31,7 +31,7 @@ ij_http-request_spaces_around_assignment_operators = true
 
 [{*.kt,*.kts}]
 # noinspection EditorConfigKeyCorrectness
-ktlint_code_style = ktlint_official
+ktlint_code_style = intellij_idea
 ij_kotlin_align_multiline_parameters = false
 ij_kotlin_name_count_to_use_star_import = 2147483647
 ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
