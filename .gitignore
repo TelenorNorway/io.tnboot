@@ -17,3 +17,4 @@
 !/.editorconfig
 !/settings.gradle.kts
 !/**/build.gradle.kts
+!/**/*.kt
