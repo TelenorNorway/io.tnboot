@@ -20,3 +20,12 @@ kotlin-std = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-std
 kotlin-reflect = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-reflect" }
 kotlin-test = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-test" }
 kotlin-dokka-versioning = { version.ref = "dokka", module = "org.jetbrains.dokka:versioning-plugin" }
+
+# Gradle Plugin Dependencies
+dotenv = { version = "6.4.1", module = "io.github.cdimascio:dotenv-kotlin" }
+kotlin-plugin-jvm = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-gradle-plugin" }
+kotlin-plugin-kapt = { version.ref = "kotlin", module = "org.jetbrains.kotlin.kapt:org.jetbrains.kotlin.kapt.gradle.plugin" }
+kotlin-plugin-jpa = { version.ref = "kotlin", module = "org.jetbrains.kotlin.plugin.jpa:org.jetbrains.kotlin.plugin.jpa.gradle.plugin" }
+kotlin-plugin-spring = { version.ref = "kotlin", module = "org.jetbrains.kotlin.plugin.spring:org.jetbrains.kotlin.plugin.spring.gradle.plugin" }
+spring-plugin-boot = { version.ref = "boot", module = "org.springframework.boot:spring-boot-gradle-plugin" }
+spring-plugin-deps = { version.ref = "springdeps", module = "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin" }
