@@ -5,15 +5,6 @@ plugins {
 	`java-platform`
 }
 
-buildscript {
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.yaml:snakeyaml:2.2")
-	}
-}
-
 javaPlatform.allowDependencies()
 
 val bom = DependencyGroups(
