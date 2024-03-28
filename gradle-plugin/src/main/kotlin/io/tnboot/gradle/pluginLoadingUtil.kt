@@ -2,7 +2,6 @@ package io.tnboot.gradle
 
 import org.gradle.api.Project
 import org.slf4j.LoggerFactory
-import java.util.stream.Stream
 import kotlin.reflect.KClass
 
 private val log = LoggerFactory.getLogger(PluginContainer::class.java)
@@ -86,8 +85,9 @@ internal inline fun <reified T : Any> plugin(noinline predicate: (Project) -> Bo
  */
 internal fun plugins(vararg plugins: PluginContainer): (Project) -> Unit {
 	return { project ->
-		Stream.of(*plugins)
-			.filter { it.shouldBeApplied(project) }
-			.forEach { it.apply(project) }
+		for (plugin in plugins) {
+			if (!plugin.shouldBeApplied(project)) continue
+			plugin.apply(project)
+		}
 	}
 }
