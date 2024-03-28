@@ -1,0 +1,26 @@
+- title: Swagger
+  repository: https://github.com/swagger-api/swagger-core
+  website: https://swagger.io/
+  group: io.swagger.core.v3
+  version: swagger
+  artifacts:
+    - swagger-annotations
+    - swagger-core
+    - swagger-integration
+    - swagger-jaxrs2-servlet-initializer-v2
+    - swagger-jaxrs2-servlet-initializer
+    - swagger-jaxrs2
+    - swagger-models
+    - swagger-project-jakarta
+
+- title: OpenAPI & Spring Boot (SpringDoc)
+  repository: https://github.com/springdoc/springdoc-openapi
+  website: https://springdoc.org/
+  group: org.springdoc
+  version: springdoc
+  artifacts:
+    - springdoc-openapi-starter-common
+    - springdoc-openapi-starter-webflux-api
+    - springdoc-openapi-starter-webflux-ui
+    - springdoc-openapi-starter-webmvc-api
+    - springdoc-openapi-starter-webmvc-ui

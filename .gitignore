@@ -8,6 +8,9 @@
 !/.github/CODEOWNERS
 !/.github/assets/next.png
 
+!/gradle/dependencies.yaml
+!/gradle/libs.versions.toml
+
 !/LICENSE
 !/README.md
 
