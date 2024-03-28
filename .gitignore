@@ -1,9 +1,10 @@
 *
 
+!/**/
+
 !/.gitignore
 
 !/.github/
-!/.github/**/
 !/.github/CODEOWNERS
 !/.github/assets/next.png
 
@@ -12,4 +13,4 @@
 
 !/.editorconfig
 !/settings.gradle.kts
-!/build.gradle.kts
+!/**/build.gradle.kts
