@@ -1,6 +1,7 @@
 package io.tnboot.gradle
 
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
+import io.tnboot.gradle.environment.Environment
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
@@ -16,6 +17,10 @@ class TelenorBootPlugin : Plugin<Project> {
 	 * Apply the plugin to the given project.
 	 */
 	override fun apply(target: Project) {
+		// Initialize environment variables.
+		Environment[target]
+
+		// Load plugins.
 		loadPlugins(target)
 	}
 
