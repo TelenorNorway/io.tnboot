@@ -1,3 +1,22 @@
 [versions]
+kotlin = "1.9.23"
+dokka = "1.9.20"
+boot = "3.2.4"
+springdeps = "1.1.4"
 swagger = "2.2.21"
 springdoc = "2.4.0"
+
+[plugins]
+publish-gradle = { version = "1.2.1", id = "com.gradle.plugin-publish" }
+kotlin-jvm = { version.ref = "kotlin", id = "org.jetbrains.kotlin.jvm" }
+kotlin-kapt = { version.ref = "kotlin", id = "org.jetbrains.kotlin.kapt" }
+kotlin-spring = { version.ref = "kotlin", id = "org.jetbrains.kotlin.plugin.spring" }
+kotlin-dokka = { version.ref = "dokka", id = "org.jetbrains.dokka" }
+spring-boot = { version.ref = "boot", id = "org.springframework.boot" }
+spring-deps = { version.ref = "springdeps", id = "io.spring.dependency-management" }
+
+[libraries]
+kotlin-std = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-stdlib-jvm" }
+kotlin-reflect = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-reflect" }
+kotlin-test = { version.ref = "kotlin", module = "org.jetbrains.kotlin:kotlin-test" }
+kotlin-dokka-versioning = { version.ref = "dokka", module = "org.jetbrains.dokka:versioning-plugin" }
