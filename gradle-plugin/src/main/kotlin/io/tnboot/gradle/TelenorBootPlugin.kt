@@ -3,6 +3,7 @@ package io.tnboot.gradle
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import io.tnboot.gradle.environment.Environment
 import io.tnboot.gradle.plugin.GitHubPlugin
+import io.tnboot.gradle.plugin.JavaForkOptionsDotEnvPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
@@ -38,6 +39,7 @@ class TelenorBootPlugin : Plugin<Project> {
 			plugin("org.jetbrains.kotlin.plugin.jpa", projectContainsArtifactsWithSubstringPredicate("jpa")),
 
 			// Telenor Boot Plugins
+			plugin<JavaForkOptionsDotEnvPlugin>(),
 			plugin<GitHubPlugin>(),
 		)
 	}
