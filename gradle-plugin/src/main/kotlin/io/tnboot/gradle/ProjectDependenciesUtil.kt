@@ -17,3 +17,10 @@ internal fun containsSubstringInArtifacts(project: Project, substring: String): 
 internal fun projectContainsArtifactsWithSubstringPredicate(substring: String): (Project) -> Boolean {
 	return { project -> containsSubstringInArtifacts(project, substring) }
 }
+
+internal fun Project.explicitDependenciesFromAllConfigurations() = this
+	.configurations.flatMap { configuration ->
+		configuration.allDependencies.mapNotNull { dependency ->
+			"${dependency.group ?: return@mapNotNull null}:${dependency.name}"
+		}
+	}.toSet()
