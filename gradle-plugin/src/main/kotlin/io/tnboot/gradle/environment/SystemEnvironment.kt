@@ -16,4 +16,6 @@ internal object SystemEnvironment {
 
 		cached
 	}
+
+	operator fun get(key: String) = load()[key]
 }
