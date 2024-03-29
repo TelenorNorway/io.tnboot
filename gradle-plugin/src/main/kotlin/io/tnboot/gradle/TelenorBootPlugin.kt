@@ -2,6 +2,7 @@ package io.tnboot.gradle
 
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import io.tnboot.gradle.environment.Environment
+import io.tnboot.gradle.plugin.AutoExcludeArtifactsPlugin
 import io.tnboot.gradle.plugin.GitHubPlugin
 import io.tnboot.gradle.plugin.JavaForkOptionsDotEnvPlugin
 import io.tnboot.gradle.plugin.TelenorBootDependenciesPlugin
@@ -45,6 +46,7 @@ class TelenorBootPlugin : Plugin<Project> {
 			plugin<JavaForkOptionsDotEnvPlugin>(),
 			plugin<GitHubPlugin>(),
 			plugin<TelenorBootDependenciesPlugin>(),
+			plugin<AutoExcludeArtifactsPlugin>(),
 		)
 	}
 }
