@@ -1,7 +1,6 @@
 package io.tnboot.gradle.environment
 
 import org.gradle.api.Project
-import org.gradle.process.ProcessForkOptions
 
 class Environment(
 	private val inner: Map<String, String>,
@@ -39,13 +38,4 @@ class Environment(
 	override fun get(key: String) = inner[key]
 	override fun containsValue(value: String) = inner.containsValue(value)
 	override fun containsKey(key: String) = inner.containsKey(key)
-
-	/**
-	 * Applies the environment variables to the [ProcessForkOptions].
-	 */
-	fun applyTo(options: ProcessForkOptions) {
-		for ((key, value) in this) {
-			options.environment(key, value)
-		}
-	}
 }

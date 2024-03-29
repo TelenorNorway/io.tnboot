@@ -11,7 +11,10 @@ import org.gradle.process.JavaForkOptions
  */
 class JavaForkOptionsDotEnvPlugin : Plugin<Project> {
 	override fun apply(target: Project) {
-		target.tasks.filterIsInstance<JavaForkOptions>()
-			.forEach(Environment[target]::applyTo)
+		val environment = Environment[target]
+		target.tasks.all {
+			if (it !is JavaForkOptions) return@all
+			it.environment(environment)
+		}
 	}
 }
