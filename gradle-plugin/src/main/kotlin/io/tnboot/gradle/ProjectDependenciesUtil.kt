@@ -24,3 +24,11 @@ internal fun Project.explicitDependenciesFromAllConfigurations() = this
 			"${dependency.group ?: return@mapNotNull null}:${dependency.name}"
 		}
 	}.toSet()
+
+internal fun Project.excludeArtifactsFromAllConfigurations(artifacts: List<Pair<String, String>>) {
+	this.configurations.all {
+		artifacts.forEach { (group, name) ->
+			it.exclude(mapOf("group" to group, "module" to name))
+		}
+	}
+}
