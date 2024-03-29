@@ -6,8 +6,6 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.plugins.PublishingPlugin
 import java.net.URI
 
-// todo(James Bradlee): Replace this with io.tnboot's GitHub plugin
-//                      once it's been implemented.
 private fun PublishingExtension.githubActionsRepository() {
 	if ((System.getenv("GITHUB_ACTIONS") ?: "false") != "true") return
 	System.getenv("GITHUB_REPOSITORY")

@@ -30,9 +30,5 @@ gradlePlugin {
 	}
 }
 
-tasks.withType<Jar> {
-	manifest {
-		attributes["Implementation-Title"] = "Telenor Boot Plugin"
-		attributes["Implementation-Version"] = project.version
-	}
-}
+// Disable Maven Publications
+publish.disable()

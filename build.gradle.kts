@@ -1,3 +1,6 @@
+import io.tnboot.gradle.build.PublishPlugin
+import io.tnboot.gradle.build.PublishPlugin.Companion.configurePublish
+
 plugins {
 	alias(libs.plugins.kotlin.jvm)
 	alias(libs.plugins.kotlin.dokka)
@@ -37,6 +40,7 @@ allprojects {
 	apply(plugin = "io.spring.dependency-management")
 	apply(plugin = "jacoco")
 	apply(plugin = "jacoco-report-aggregation")
+	pluginManager.apply(PublishPlugin::class.java)
 
 	kotlin.jvmToolchain(21)
 
@@ -46,6 +50,17 @@ allprojects {
 			freeCompilerArgs += "-Xjvm-default=all"
 			jvmTarget = "21"
 		}
+	}
+
+	tasks.withType<Jar> {
+		manifest {
+			attributes["Implementation-Title"] = "io.tnboot:${project.name}"
+			attributes["Implementation-Version"] = project.version
+		}
+	}
+
+	configurePublish {
+		from(components["kotlin"])
 	}
 
 	tasks.test {
