@@ -66,4 +66,8 @@ allprojects {
 	tasks.test {
 		useJUnitPlatform()
 	}
+
+	dependencies {
+		testImplementation(kotlin("test"))
+	}
 }
