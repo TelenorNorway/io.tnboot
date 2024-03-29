@@ -26,7 +26,9 @@ class TelenorBootPlugin : Plugin<Project> {
 		loadPlugins(target)
 	}
 
-	private companion object {
+	internal companion object {
+		val VERSION = TelenorBootPlugin::class.java.`package`.implementationVersion!!
+
 		private val loadPlugins = plugins(
 			// Inject default plugins
 			plugin<KotlinPluginWrapper>(), // Kotlin (JVM)
