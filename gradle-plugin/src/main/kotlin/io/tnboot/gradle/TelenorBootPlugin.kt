@@ -5,6 +5,7 @@ import io.tnboot.gradle.environment.Environment
 import io.tnboot.gradle.plugin.AutoExcludeArtifactsPlugin
 import io.tnboot.gradle.plugin.AutoVersionPlugin
 import io.tnboot.gradle.plugin.GitHubPlugin
+import io.tnboot.gradle.plugin.InjectOpenTelemetryAgentPlugin
 import io.tnboot.gradle.plugin.JavaForkOptionsDotEnvPlugin
 import io.tnboot.gradle.plugin.TelenorBootDependenciesPlugin
 import org.gradle.api.Plugin
@@ -49,6 +50,7 @@ class TelenorBootPlugin : Plugin<Project> {
 			plugin<TelenorBootDependenciesPlugin>(),
 			plugin<AutoExcludeArtifactsPlugin>(),
 			plugin<AutoVersionPlugin>(),
+			plugin<InjectOpenTelemetryAgentPlugin>(),
 		)
 	}
 }
