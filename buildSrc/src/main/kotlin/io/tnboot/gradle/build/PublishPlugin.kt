@@ -51,7 +51,7 @@ class PublishPlugin : Plugin<Project> {
 						apply(it)
 					}
 				}
-				log.warn("Applied for {}", target.name)
+				log.debug("Applied for {}", target.name)
 			}
 		}
 	}
