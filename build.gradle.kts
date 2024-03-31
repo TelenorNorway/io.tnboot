@@ -25,6 +25,11 @@ allprojects {
 		mavenCentral()
 	}
 
+	layout.buildDirectory.set(
+		rootProject.mkdir("build/_" + project.relativePath(project.path).replace(Regex("[^a-z0-9]"), "_")),
+	)
+
+	// region Plugin Configurations
 	apply(plugin = "maven-publish")
 
 	// telenor-boot-dependencies is a special project that uses the
