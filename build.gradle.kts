@@ -1,5 +1,6 @@
-import io.tnboot.gradle.build.PublishPlugin
+import io.tnboot.gradle.build.ConfigurePlugin
 import io.tnboot.gradle.build.PublishPlugin.Companion.configurePublish
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
 	alias(libs.plugins.kotlin.jvm)
@@ -45,8 +46,18 @@ allprojects {
 	apply(plugin = "io.spring.dependency-management")
 	apply(plugin = "jacoco")
 	apply(plugin = "jacoco-report-aggregation")
-	pluginManager.apply(PublishPlugin::class.java)
+	pluginManager.apply(ConfigurePlugin::class.java)
+	// endregion
 
+	configurePublish {
+		from(components["kotlin"])
+	}
+
+	dependencies {
+		testImplementation(kotlin("test"))
+	}
+
+	// region Kotlin Compiler Configurations
 	kotlin.jvmToolchain(21)
 
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -56,23 +67,19 @@ allprojects {
 			jvmTarget = "21"
 		}
 	}
+	// endregion
 
+	// region Packaging Configurations
 	tasks.withType<Jar> {
 		manifest {
-			attributes["Implementation-Title"] = "io.tnboot:${project.name}"
+			attributes["Implementation-Title"] = project.name
 			attributes["Implementation-Version"] = project.version
 		}
 	}
 
-	configurePublish {
-		from(components["kotlin"])
+	tasks.withType<BootJar> {
+		enabled = false
 	}
 
-	tasks.test {
-		useJUnitPlatform()
-	}
-
-	dependencies {
-		testImplementation(kotlin("test"))
-	}
+	// endregion
 }
