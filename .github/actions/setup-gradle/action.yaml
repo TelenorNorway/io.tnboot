@@ -1,0 +1,12 @@
+name: Setup Gradle
+description: Setup Gradle
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        source $GITHUB_WORKSPACE/gradle/wrapper/gradle-wrapper.properties
+        path=${{ runner.temp }}/gradle
+        wget --no-verbose -O ${{ runner.temp }}/gradle.zip $distributionUrl
+        unzip ${{ runner.temp }}/gradle.zip -d $path
+        echo $path/$(ls -1 $path)/bin >> $GITHUB_PATH

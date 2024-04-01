@@ -6,6 +6,8 @@
 
 !/.github/
 !/.github/CODEOWNERS
+!/.github/actions/*/action.yaml
+!/.github/workflows/*.yaml
 !/.github/assets/next.png
 !/.github/CODE_OF_CONDUCT.md
 !/.github/SECURITY.md
