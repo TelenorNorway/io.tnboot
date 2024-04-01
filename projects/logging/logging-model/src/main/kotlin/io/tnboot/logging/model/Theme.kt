@@ -5,6 +5,9 @@ package io.tnboot.logging.model
  * Logging. A theme is responsible for rendering a log event into a
  * string that can be written to a log file or console.
  */
+// Methods are marked as unused by IntelliJ because they are not used
+// in the project. However, they are used by consumers of the module.
+@Suppress("unused")
 interface Theme {
 	/**
 	 * The name of the theme.
