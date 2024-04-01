@@ -32,3 +32,10 @@ fun Project.mavenPublish(block: MavenPublication.() -> Unit) {
 		}
 	}
 }
+
+val Project.publishedProjects get() = rootProject.allprojects.filter {
+	it != project && it.plugins.hasPlugin(PublishPlugin::class.java) &&
+		it.extensions.getByType(PublishPlugin.Extension::class.java).isPublished
+}
+
+val Project.notation get() = "$group:$name:$version"

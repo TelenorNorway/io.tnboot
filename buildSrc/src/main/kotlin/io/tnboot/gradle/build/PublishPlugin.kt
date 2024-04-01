@@ -20,7 +20,9 @@ class PublishPlugin : Plugin<Project> {
 		}
 	}
 
-	open class Extension {
+	open class Extension(
+		private val project: Project,
+	) {
 		var enabled = true
 		var evenWithChildren = false
 
@@ -37,13 +39,15 @@ class PublishPlugin : Plugin<Project> {
 		fun configure(block: MavenPublication.() -> Unit) {
 			configurations.add(block)
 		}
+
+		val isPublished get() = enabled && (evenWithChildren || project.childProjects.isEmpty())
 	}
 
 	override fun apply(target: Project) {
-		target.extensions.add(Extension::class.java, "publish", Extension())
+		target.extensions.add(Extension::class.java, "publish", Extension(target))
 		target.afterEvaluate {
 			target.extensions.getByType(Extension::class.java).let { extension ->
-				if (!extension.enabled || (target.childProjects.isNotEmpty() && !extension.evenWithChildren)) return@afterEvaluate
+				if (!extension.isPublished) return@afterEvaluate
 				log.debug("Enabling Maven Publications for project {}", target.name)
 				target.mavenPublish {
 					extension.configurations.forEach {
