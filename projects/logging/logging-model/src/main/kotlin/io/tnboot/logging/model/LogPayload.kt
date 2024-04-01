@@ -7,6 +7,10 @@ import java.time.Instant
  * event. This is the data that is passed to Telenor Boot Logging
  * themes when a log event is created.
  */
+// Properties are marked as unused by IntelliJ because they are not
+// used in the project. However, they are used by consumers of the
+// module.
+@Suppress("unused")
 interface LogPayload {
 	val at: Instant
 	val level: LogLevel
