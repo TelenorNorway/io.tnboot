@@ -6,5 +6,6 @@ include(
 )
 
 include(
+	":projects:logging:colorful",
 	":projects:logging:logging-model",
 )
