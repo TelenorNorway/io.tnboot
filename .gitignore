@@ -12,6 +12,7 @@
 !/.github/CODE_OF_CONDUCT.md
 !/.github/SECURITY.md
 
+!/gradle/wrapper/gradle-wrapper.properties
 !/gradle/dependencies.yaml
 !/gradle/libs.versions.toml
 
