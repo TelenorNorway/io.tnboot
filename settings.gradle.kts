@@ -4,3 +4,7 @@ include(
 	":telenor-boot-dependencies",
 	":gradle-plugin",
 )
+
+include(
+	":projects:logging:logging-model",
+)
