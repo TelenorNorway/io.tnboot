@@ -1,5 +1,7 @@
 import io.tnboot.gradle.build.DependencyGroups
 import io.tnboot.gradle.build.mavenPublish
+import io.tnboot.gradle.build.notation
+import io.tnboot.gradle.build.publishedProjects
 
 plugins {
 	`java-platform`
@@ -15,6 +17,7 @@ val bom = DependencyGroups(
 dependencies {
 	constraints {
 		bom.dependencies.forEach { add("api", it) }
+		publishedProjects.forEach { add("api", it.notation) }
 	}
 }
 
