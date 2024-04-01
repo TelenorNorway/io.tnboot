@@ -1,0 +1,16 @@
+name: Setup Ktlint
+description: Setup Ktlint
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        path=${{ runner.temp }}/ktlint
+        mkdir -p $path
+        url=$(curl -sq \
+          -H  "Accept application/vnd.github.v3+json" \
+          https://api.github.com/repos/pinterest/ktlint/releases/latest \
+        | jq -r '.assets[] | select(.name == "ktlint").browser_download_url')
+        wget --no-verbose -O $path/ktlint $url
+        chmod +x $path/ktlint
+        echo $path >> $GITHUB_PATH

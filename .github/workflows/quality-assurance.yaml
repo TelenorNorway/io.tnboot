@@ -1,0 +1,49 @@
+name: Quality Assurance
+on: [workflow_call, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+      - name: Setup Gradle
+        uses: ./.github/actions/setup-gradle
+      - name: Tests
+        run: gradle test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get number of commits in push
+        id: payload
+        if: github.event_name == 'push'
+        env:
+          COMMITS: ${{ toJson(github.event.commits) }}
+        run: |
+          let NCOMMITS=1+$(echo $COMMITS | jq '. | length')
+          echo "commit_length=$NCOMMITS" >> $GITHUB_OUTPUT
+      - name: Checking out ${{ steps.payload.outputs.commit_length || '1' }} commits
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ steps.payload.outputs.commit_length || '1' }}
+      - name: Setup Ktlint
+        uses: ./.github/actions/setup-ktlint
+      - run: |
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            args=$(git diff --name-only --relative ${{ github.event.before }} ${{ github.event.after }} -- '*.kt' '*.kts' | xargs printf -- '%s\n' | tr '\n' ' ')
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            args=$(gh pr diff --name-only ${{ github.event.number }} | grep -E "\.kts?$" | xargs printf -- '%s\n' | tr '\n' ' ')
+          fi
+          args=$(echo -e "$args" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+          if [[ -n "$args" ]]; then
+            echo "Running ktlint on: $args"
+            ktlint --relative $args
+          fi
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
