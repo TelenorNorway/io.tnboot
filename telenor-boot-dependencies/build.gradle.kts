@@ -1,4 +1,5 @@
 import io.tnboot.gradle.build.DependencyGroups
+import io.tnboot.gradle.build.PublishPlugin
 import io.tnboot.gradle.build.mavenPublish
 
 plugins {
@@ -15,6 +16,13 @@ val bom = DependencyGroups(
 dependencies {
 	constraints {
 		bom.dependencies.forEach { add("api", it) }
+
+		rootProject.allprojects.filter {
+			it != project && it.plugins.hasPlugin(PublishPlugin::class.java) &&
+				it.extensions.getByType(PublishPlugin.Extension::class.java).isEnabled
+		}.forEach {
+			add("api", it)
+		}
 	}
 }
 
