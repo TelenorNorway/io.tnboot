@@ -9,3 +9,7 @@ include(
 	":projects:logging:colorful",
 	":projects:logging:logging-model",
 )
+
+include(
+	":util:util-homedir",
+)
